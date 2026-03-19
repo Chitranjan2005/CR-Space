@@ -2,6 +2,7 @@
 import { useRef, useEffect, useState } from "react";
 import { gsap } from "@/lib/gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import MusicPlayer from "@/components/ui/MusicPlayer";
 
 export default function Hero() {
   const loaderCanvasRef = useRef(null);
@@ -330,6 +331,7 @@ export default function Hero() {
             <div style={s.scrollLine} />
             <span style={s.scrollText}>SCROLL</span>
           </div>
+          <MusicPlayer />
 
         </section>
       )}
