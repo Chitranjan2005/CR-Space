@@ -7,3 +7,8 @@
   0%, 100% { opacity: 0.5; }
   50% { opacity: 1; }
 }
+html, body {
+  overflow-x: hidden;
+  overflow-y: auto !important;
+  height: auto !important;
+}
