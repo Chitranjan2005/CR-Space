@@ -1,0 +1,232 @@
+/* ===== Loader ===== */
+.loader {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loaderInner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.loaderLogo {
+  display: flex;
+  gap: 4px;
+}
+
+.loaderChar {
+  display: inline-block;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  font-family: sans-serif;
+  letter-spacing: 0.05em;
+  color: #4db8d4;
+  animation: loaderFloat 1.8s ease-in-out infinite;
+}
+
+.loaderRole {
+  font-family: sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: #444;
+}
+
+.progressTrack {
+  width: 240px;
+  height: 2px;
+  margin-top: 0.5rem;
+  border-radius: 2px;
+  overflow: hidden;
+  background: #1a2a3a;
+}
+
+.progressBar {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(to right, #1a4a5a, #4db8d4);
+  transition: width 0.1s ease;
+}
+
+.loaderPercent {
+  font-family: sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: #4db8d4;
+}
+
+/* ===== Hero section ===== */
+.section {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 48px;
+}
+
+.navLogo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-family: sans-serif;
+  color: #4db8d4;
+}
+
+.navLinks {
+  display: flex;
+  gap: 2rem;
+}
+
+.navLink {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #888;
+  transition: color 0.2s ease;
+}
+
+.navLink:hover {
+  color: #4db8d4;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5vw;
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 6vw;
+}
+
+.photoWrap {
+  flex: 0 0 auto;
+}
+
+.blobShape {
+  width: 260px;
+  height: 300px;
+  overflow: hidden;
+  background: #1a2a3a;
+  border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.textWrap {
+  flex: 1;
+  max-width: 580px;
+}
+
+.heading {
+  margin-bottom: 1.5rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  font-family: sans-serif;
+  line-height: 1.4;
+  color: #ccc;
+}
+
+.descWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.desc {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.9;
+  font-family: sans-serif;
+}
+
+.word {
+  display: inline-block;
+  margin-right: 4px;
+  color: #888;
+  opacity: 0.15;
+  will-change: opacity, transform;
+}
+
+.socials {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1.8rem;
+}
+
+.socialIcon {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #333;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #888;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.socialIcon:hover {
+  color: #4db8d4;
+  border-color: #4db8d4;
+}
+
+.scrollHint {
+  position: absolute;
+  bottom: 32px;
+  right: 48px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(to bottom, #4db8d4, transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+/* ===== Keyframes ===== */
+@keyframes loaderFloat {
+  0%, 100% { transform: translateY(0px); opacity: 0.4; }
+  50%      { transform: translateY(-8px); opacity: 1; }
+}
+
+@keyframes scrollPulse {
+  0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
+  50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+}

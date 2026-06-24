@@ -11,14 +11,12 @@ export default function SmoothScroller({ children }) {
       smooth: true,
     });
 
-    // Sync Lenis with GSAP ScrollTrigger
+    // Keep GSAP ScrollTrigger in sync with Lenis's scroll position
     lenis.on("scroll", ScrollTrigger.update);
     gsap.ticker.add((time) => lenis.raf(time * 1000));
     gsap.ticker.lagSmoothing(0);
 
-    return () => {
-      lenis.destroy();
-    };
+    return () => lenis.destroy();
   }, []);
 
   return <>{children}</>;

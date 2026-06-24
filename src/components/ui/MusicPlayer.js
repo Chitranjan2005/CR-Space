@@ -96,7 +96,7 @@ export default function MusicPlayer() {
         opacity: playing ? 1 : 0.4,
         color: playing ? "#4db8d4" : "#888",
       }}>
-        {playing ? "INTERSTELLAR OST" : "PLAY MUSIC"}
+        {playing ? "" : ""}
       </span>
 
       <style>{`
