@@ -23,16 +23,16 @@ const TOOLS_AND_LANGUAGES = [
 
 const ACHIEVEMENTS = [
   {
-    date: "2026 // EVENT_01",
+    date: "Securerd 2nd Position in Hackathon",
     badge: "HACKATHON",
-    title: "Climate Digital Twin — Prototype Build",
-    desc: "Built a full data pipeline with LSTM forecasting and a what-if simulator for Delhi-NCR climate modeling.",
+    title: "Footstep Energy Generator",
+    desc: "This project explores the potential of harvesting energy from footsteps. By converting mechanical energy into electrical energy, this system aims to power small electronic devices.",
   },
   {
-    date: "2026 // EVENT_02",
-    badge: "PROJECT",
-    title: "CR-Space Portfolio Launch",
-    desc: "Designed and shipped a fully custom Next.js portfolio with GSAP scroll choreography and a canvas starfield.",
+    date: "secured 3rd Position in Hackathon",
+    badge: "Hackathon",
+    title: "Survillance Car",
+    desc: "A survillance car that can be cntrolled by using anyphone using blutooth and cab control by voice commands.",
   },
 ];
 
@@ -102,7 +102,6 @@ export default function SkillsAchievements() {
           <div className={styles.glassHeader}>
             <span className={styles.glassDot} />
             <span className={styles.glassTitle}>SKILLS & ACHIEVEMENTS</span>
-            <span className={styles.glassIndex}>// 02 — 03</span>
           </div>
         </div>
 
