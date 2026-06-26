@@ -8,15 +8,15 @@ import styles from "./Hero.module.css";
 const NAV_ITEMS = ["HOME", "PROJECTS", "SKILLS", "CONTACT"];
 
 const SOCIALS = [
-  { label: "GitHub", href: "https://github.com/chitranjan2005", icon: "⌥" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/chitranjan-k-50bb70324", icon: "in" },
-  { label: "Twitter", href: "", icon: "𝕏" },
+  { label: "GitHub", href: "https://github.com", icon: "⌥" },
+  { label: "LinkedIn", href: "https://linkedin.com", icon: "in" },
+  { label: "Twitter", href: "https://twitter.com", icon: "𝕏" },
 ];
 
 const DESCRIPTIONS = [
   "I am a Full-stack developer building scalable and user-focused web applications.",
-  "currently pursuing Bachelor of technology with strong focus on computer science fundamentals and continuous learning.",
-  "Skilled in Data Structures and Algorithms, with a passion for solving challenging programming problems. Focused on writing optimized, scalable, and efficient code for real-world applications.",
+  "Bachelor of technology with strong focus on computer science fundamentals and continuous learning.",
+  "Currently exploring Agentic AI to create intelligent, autonomous systems.",
 ];
 
 const NAME_LETTERS = "Chitranjan".split("");
@@ -95,7 +95,10 @@ export default function Hero() {
   return (
     <section className={`hero-section ${styles.section}`}>
       <nav className={styles.nav}>
-        <span className={styles.navLogo}>CR-SPACE</span>
+        <div className={styles.navBrand}>
+          <MusicPlayer />
+          <span className={styles.navLogo}>CR-SPACE</span>
+        </div>
         <div className={styles.navLinks}>
           {NAV_ITEMS.map((item) => (
             <a key={item} href={`#${item.toLowerCase()}`} className={styles.navLink}>
@@ -149,8 +152,6 @@ export default function Hero() {
       <div className={styles.scrollHint}>
         <div className={styles.scrollLine} />
       </div>
-
-      <MusicPlayer />
     </section>
   );
 }
