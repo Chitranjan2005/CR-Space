@@ -8,15 +8,15 @@ import styles from "./Hero.module.css";
 const NAV_ITEMS = ["HOME", "PROJECTS", "SKILLS", "CONTACT"];
 
 const SOCIALS = [
-  { label: "GitHub", href: "https://github.com", icon: "⌥" },
-  { label: "LinkedIn", href: "https://linkedin.com", icon: "in" },
-  { label: "Twitter", href: "https://twitter.com", icon: "𝕏" },
+  { label: "GitHub", href: "https://github.com/chitranjan2005", icon: "⌥" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/chitranjan-k-50bb70324", icon: "in" },
+  { label: "leetcode", href: "https://leetcode.com/u/O3vjKD9Bsv", icon: "𝕏" },
 ];
 
 const DESCRIPTIONS = [
   "I am a Full-stack developer building scalable and user-focused web applications.",
-  "Bachelor of technology with strong focus on computer science fundamentals and continuous learning.",
-  "Currently exploring Agentic AI to create intelligent, autonomous systems.",
+  "currently pursuing Bachelor of technology with strong focus on computer science fundamentals and continuous learning.",
+  "Skilled in Data Structures and Algorithms, with a passion for solving challenging programming problems. Focused on writing optimized, scalable, and efficient code for real-world applications.",
 ];
 
 const NAME_LETTERS = "Chitranjan".split("");

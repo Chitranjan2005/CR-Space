@@ -2,10 +2,9 @@
 import { useState } from "react";
 import PageLoader from "@/components/layout/PageLoader";
 import Hero from "@/components/sections/Hero";
-// import About from "@/components/sections/About";
 import SkillsAchievements from "@/components/sections/SkillsAchievements";
 import ProjectsNew from "@/components/sections/ProjectsNew";
-// import Contact from "@/components/sections/Contact";
+import Contact from "@/components/sections/Contact";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -17,10 +16,9 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      {/* <About /> */}
-      <SkillsAchievements />
       <ProjectsNew />
-      {/* <Contact /> */}
+      <SkillsAchievements />
+      <Contact />
     </main>
   );
 }

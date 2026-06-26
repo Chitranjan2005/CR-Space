@@ -12,10 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        {/* Fixed backdrop — sits behind everything, never scrolls */}
         <Background />
-
-        {/* Scrollable content — Lenis controls scroll on this wrapper only */}
         <SmoothScroller>
           <div style={{ position: "relative", zIndex: 2 }}>{children}</div>
         </SmoothScroller>

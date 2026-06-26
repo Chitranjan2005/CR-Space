@@ -6,7 +6,6 @@ import styles from "./ProjectsNew.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ── Dummy data — replace with your real project details ──
 const PROJECTS = [
   {
     tag: "HACKATHON",
