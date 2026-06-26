@@ -10,11 +10,11 @@ gsap.registerPlugin(ScrollTrigger);
 const PROJECTS = [
   {
     tag: "HACKATHON",
-    title: "Climate Digital Twin — India",
-    desc: "Full data pipeline with a PyTorch LSTM forecasting model and a FastAPI backend, simulating regional climate scenarios.",
-    stack: ["Python", "PyTorch", "FastAPI", "React"],
-    liveUrl: "#",
-    codeUrl: "#",
+    title: "Commit DNA",
+    desc: "GitHub commit history analyzer that generates a burnout score and developer archetype card from real commit patterns.",
+    stack: ["React", "Node", "Express", "Simple-git"],
+    liveUrl: "commit-dna-lkc9.vercel.app",
+    codeUrl: "https://github.com/Chitranjan2005/Commit-DNA.git",
   },
   {
     tag: "PROJECT",
@@ -25,12 +25,12 @@ const PROJECTS = [
     codeUrl: "#",
   },
   {
-    tag: "HACKATHON",
-    title: "MindBridge",
-    desc: "Agentic mental health triage tool with Hinglish language support, built and deployed end-to-end during a hackathon.",
-    stack: ["Next.js", "Tailwind", "Vercel"],
+    tag: "PROJECT",
+    title: "Footstep-Energy-Generator",
+    desc: "This project explores the potential of harvesting energy from footsteps using piezoelectric transducers. By converting mechanical energy into electrical energy, this system aims to power small electronic devices..",
+    stack: [],
     liveUrl: "#",
-    codeUrl: "#",
+    codeUrl: "https://github.com/Chitranjan2005/Footstep-Energy-Generator.git",
   },
   {
     tag: "PROJECT",
