@@ -7,31 +7,22 @@ import styles from "./SkillsAchievements.module.css";
 gsap.registerPlugin(ScrollTrigger);
 
 // ── Placeholder data — swap in real values later ──
-const SKILL_CATEGORIES = [
-  {
-    label: "FRONTEND",
-    skills: [
-      { name: "React / Next.js", level: 90, tag: "[ACTIVE]" },
-      { name: "JavaScript / TypeScript", level: 85, tag: "[ACTIVE]" },
-      { name: "GSAP / Framer Motion", level: 75, tag: "[ACTIVE]" },
-    ],
-  },
-  {
-    label: "BACKEND",
-    skills: [
-      { name: "Node.js / Express", level: 85, tag: "[ACTIVE]" },
-      { name: "MongoDB", level: 78, tag: "[ACTIVE]" },
-      { name: "REST / Auth", level: 80, tag: "[ACTIVE]" },
-    ],
-  },
-  {
-    label: "TOOLS",
-    skills: [
-      { name: "Git / GitHub", level: 88, tag: "[ACTIVE]" },
-      { name: "Vercel / Render", level: 70, tag: "[ACTIVE]" },
-      { name: "Figma", level: 60, tag: "[LEARNING]" },
-    ],
-  },
+const DEVELOPMENT = [
+  "React / Next.js",
+  "JavaScript / TypeScript",
+  "Node.js / Express",
+  "MongoDB",
+  "REST APIs / Auth",
+  "GSAP / Framer Motion",
+];
+
+const TOOLS_AND_LANGUAGES = [
+  "Git / GitHub",
+  "Vercel / Render",
+  "Figma",
+  "Python",
+  "Java",
+  "VS Code",
 ];
 
 const ACHIEVEMENTS = [
@@ -66,56 +57,52 @@ export default function SkillsAchievements() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Section headers
-      gsap.utils.toArray(`.${styles.sectionHead}`).forEach((el) => {
-        gsap.fromTo(
-          el,
-          { opacity: 0, y: 20 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            ease: "power3.out",
-            scrollTrigger: { trigger: el, start: "top 85%" },
-          }
-        );
-      });
-
-      // Skill bars — fill on scroll
-      gsap.utils.toArray(`.${styles.skillRow}`).forEach((row) => {
-        const bar = row.querySelector(`.${styles.signalBar}`);
-        const level = bar?.dataset?.level || 0;
-
-        gsap.fromTo(
-          row,
-          { opacity: 0, x: -20 },
-          {
-            opacity: 1,
-            x: 0,
-            duration: 0.5,
-            ease: "power2.out",
-            scrollTrigger: { trigger: row, start: "top 90%" },
-          }
-        );
-        gsap.to(bar, {
-          width: `${level}%`,
-          duration: 1.1,
+      gsap.fromTo(
+        `.${styles.glassHeader}`,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
           ease: "power3.out",
-          scrollTrigger: { trigger: row, start: "top 90%" },
-        });
-      });
+          scrollTrigger: { trigger: `.${styles.glassHeader}`, start: "top 85%" },
+        }
+      );
 
-      // Achievement log entries
+      gsap.fromTo(
+        `.${styles.skillsBox}`,
+        { opacity: 0, x: -30 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.7,
+          ease: "power3.out",
+          scrollTrigger: { trigger: `.${styles.layout}`, start: "top 82%" },
+        }
+      );
+
+      gsap.fromTo(
+        `.${styles.achievementsBox}`,
+        { opacity: 0, x: 30 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.7,
+          ease: "power3.out",
+          scrollTrigger: { trigger: `.${styles.layout}`, start: "top 82%" },
+        }
+      );
+
       gsap.utils.toArray(`.${styles.logEntry}`).forEach((entry) => {
         gsap.fromTo(
           entry,
-          { opacity: 0, y: 30 },
+          { opacity: 0, y: 24 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.6,
+            duration: 0.5,
             ease: "power3.out",
-            scrollTrigger: { trigger: entry, start: "top 88%" },
+            scrollTrigger: { trigger: entry, start: "top 90%" },
           }
         );
       });
@@ -126,59 +113,72 @@ export default function SkillsAchievements() {
 
   return (
     <div ref={rootRef}>
-      {/* ===== SKILLS ===== */}
       <section id="skills" className={styles.section}>
-        <div className={styles.sectionHead}>
-          <span className={styles.sectionIndex}>// 02 — SKILLS</span>
-          <div className={styles.sectionLine} />
+        <div className={styles.headerWrap}>
+          <div className={styles.glassHeader}>
+            <span className={styles.glassDot} />
+            <span className={styles.glassTitle}>SKILLS & ACHIEVEMENTS</span>
+            <span className={styles.glassIndex}>// 02 — 03</span>
+          </div>
         </div>
 
-        <div className={styles.skillsGrid}>
-          {SKILL_CATEGORIES.map((cat) => (
-            <div key={cat.label} className={styles.skillCategory}>
-              <div className={styles.categoryLabel}>
-                <span className={styles.categoryDot} />
-                {cat.label}
+        <div className={styles.layout}>
+          {/* ===== SKILLS BOX ===== */}
+          <div className={styles.skillsBox}>
+            <h3 className={styles.boxTitle}>Skills</h3>
+
+            <div className={styles.subPanelGrid}>
+              <div className={styles.subPanel}>
+                <div className={styles.subPanelLabel}>
+                  <span className={styles.subPanelDot} />
+                  DEVELOPMENT
+                </div>
+                <div className={styles.chipRow}>
+                  {DEVELOPMENT.map((skill) => (
+                    <span key={skill} className={styles.skillChip}>
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
 
-              {cat.skills.map((skill) => (
-                <div key={skill.name} className={styles.skillRow}>
-                  <div className={styles.skillTop}>
-                    <span className={styles.skillName}>{skill.name}</span>
-                    <span className={styles.skillTag}>{skill.tag}</span>
+              <div className={styles.subPanel}>
+                <div className={styles.subPanelLabel}>
+                  <span className={styles.subPanelDot} />
+                  TOOLS & LANGUAGES
+                </div>
+                <div className={styles.chipRow}>
+                  {TOOLS_AND_LANGUAGES.map((skill) => (
+                    <span key={skill} className={styles.skillChip}>
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ===== ACHIEVEMENTS BOX ===== */}
+          <div className={styles.achievementsBox}>
+            <h3 className={styles.boxTitle}>Achievements</h3>
+
+            <div className={styles.logWrap}>
+              <div className={styles.logSpine} />
+              {ACHIEVEMENTS.map((item) => (
+                <div key={item.title} className={styles.logEntry}>
+                  <div className={styles.logNode}>
+                    <span className={styles.logNodeDot} />
                   </div>
-                  <div className={styles.signalTrack}>
-                    <div className={styles.signalBar} data-level={skill.level} />
+                  <div className={styles.logMeta}>
+                    <span>{item.date}</span>
+                    <span className={styles.logBadge}>{item.badge}</span>
                   </div>
+                  <h4 className={styles.logTitle}>{item.title}</h4>
+                  <p className={styles.logDesc}>{item.desc}</p>
                 </div>
               ))}
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ===== ACHIEVEMENTS ===== */}
-      <section id="achievements" className={styles.section}>
-        <div className={styles.sectionHead}>
-          <span className={styles.sectionIndex}>// 03 — ACHIEVEMENTS</span>
-          <div className={styles.sectionLine} />
-        </div>
-
-        <div className={styles.logWrap}>
-          <div className={styles.logSpine} />
-          {ACHIEVEMENTS.map((item) => (
-            <div key={item.title} className={styles.logEntry}>
-              <div className={styles.logNode}>
-                <span className={styles.logNodeDot} />
-              </div>
-              <div className={styles.logMeta}>
-                <span>{item.date}</span>
-                <span className={styles.logBadge}>{item.badge}</span>
-              </div>
-              <h3 className={styles.logTitle}>{item.title}</h3>
-              <p className={styles.logDesc}>{item.desc}</p>
-            </div>
-          ))}
+          </div>
         </div>
       </section>
     </div>

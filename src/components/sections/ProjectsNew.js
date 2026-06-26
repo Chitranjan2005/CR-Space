@@ -58,8 +58,8 @@ const PROJECTS = [
   },
 ];
 
-const DESKTOP_VISIBLE = 3;
-const MOBILE_VISIBLE = 2;
+const DESKTOP_VISIBLE = 2;
+const MOBILE_VISIBLE = 1;
 const MOBILE_BREAKPOINT = 860;
 const AUTO_SCROLL_MS = 3500;
 
@@ -67,7 +67,6 @@ export default function ProjectsNew() {
   const rootRef = useRef(null);
   const trackRef = useRef(null);
   const viewportRef = useRef(null);
-  const autoScrollRef = useRef(null);
 
   const [visibleCount, setVisibleCount] = useState(DESKTOP_VISIBLE);
   const [index, setIndex] = useState(0);
@@ -75,7 +74,7 @@ export default function ProjectsNew() {
 
   const maxIndex = Math.max(0, PROJECTS.length - visibleCount);
 
-  // Track viewport width to switch 3 <-> 2 visible cards
+  // Track viewport width to switch 2 <-> 1 visible cards
   useEffect(() => {
     const updateVisibleCount = () => {
       const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
@@ -93,38 +92,31 @@ export default function ProjectsNew() {
 
   const goTo = useCallback(
     (next) => {
-      const clamped = Math.max(0, Math.min(next, maxIndex));
-      setIndex(clamped);
+      setIndex((i) => {
+        const localMax = Math.max(0, PROJECTS.length - visibleCount);
+        return Math.max(0, Math.min(next, localMax));
+      });
     },
-    [maxIndex]
+    [visibleCount]
   );
 
   const goNext = useCallback(() => {
-    setIndex((i) => (i >= maxIndex ? 0 : i + 1)); // loop back to start
-  }, [maxIndex]);
+    setIndex((i) => {
+      const localMax = Math.max(0, PROJECTS.length - visibleCount);
+      return i >= localMax ? 0 : i + 1; // loop back to start
+    });
+  }, [visibleCount]);
 
   const goPrev = useCallback(() => {
-    goTo(index - 1);
-  }, [goTo, index]);
+    setIndex((i) => Math.max(0, i - 1));
+  }, []);
 
-  // Restart the auto-scroll countdown whenever the user manually navigates,
-  // so a click doesn't get immediately undercut by an auto-advance.
-  const restartAutoScroll = useCallback(() => {
-    clearInterval(autoScrollRef.current);
-    if (!paused) {
-      autoScrollRef.current = setInterval(goNext, AUTO_SCROLL_MS);
-    }
-  }, [paused, goNext]);
-
-  const handleNextClick = () => {
-    goNext();
-    restartAutoScroll();
-  };
-
-  const handlePrevClick = () => {
-    goPrev();
-    restartAutoScroll();
-  };
+  // Keep a ref to the latest goNext so the interval below never goes stale
+  // and never needs to be torn down/recreated just because maxIndex changed.
+  const goNextRef = useRef(goNext);
+  useEffect(() => {
+    goNextRef.current = goNext;
+  }, [goNext]);
 
   // Move the track to match the current index
   useEffect(() => {
@@ -144,14 +136,19 @@ export default function ProjectsNew() {
     });
   }, [index, visibleCount]);
 
-  // Auto-scroll, paused on hover/touch
+  // Auto-scroll — single interval set up once, reads the latest goNext via ref.
+  // Pausing/resuming just toggles whether the tick actually advances.
   useEffect(() => {
-    if (paused) return;
-    autoScrollRef.current = setInterval(goNext, AUTO_SCROLL_MS);
-    return () => clearInterval(autoScrollRef.current);
-  }, [paused, goNext]);
+    const id = setInterval(() => {
+      if (!paused) goNextRef.current();
+    }, AUTO_SCROLL_MS);
+    return () => clearInterval(id);
+  }, [paused]);
 
-  // Scroll-in reveal for header + cards
+  const handleNextClick = () => goNext();
+  const handlePrevClick = () => goPrev();
+
+  // Scroll-in reveal for header + slider
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
@@ -185,10 +182,12 @@ export default function ProjectsNew() {
   return (
     <div ref={rootRef}>
       <section id="projects" className={styles.section}>
-        <div className={styles.glassHeader}>
-          <span className={styles.glassDot} />
-          <span className={styles.glassTitle}>PROJECTS</span>
-          <span className={styles.glassIndex}>// 04</span>
+        <div className={styles.headerWrap}>
+          <div className={styles.glassHeader}>
+            <span className={styles.glassDot} />
+            <span className={styles.glassTitle}>PROJECTS</span>
+            <span className={styles.glassIndex}>// 04</span>
+          </div>
         </div>
 
         <div
@@ -197,6 +196,16 @@ export default function ProjectsNew() {
           onMouseLeave={() => setPaused(false)}
           onTouchStart={() => setPaused(true)}
         >
+          <button
+            type="button"
+            className={styles.arrowBtn}
+            onClick={handlePrevClick}
+            disabled={index === 0}
+            aria-label="Previous projects"
+          >
+            ←
+          </button>
+
           <div className={styles.viewport} ref={viewportRef}>
             <div className={styles.track} ref={trackRef}>
               {PROJECTS.map((project) => (
@@ -231,25 +240,14 @@ export default function ProjectsNew() {
             </div>
           </div>
 
-          <div className={styles.navArrows}>
-            <button
-              type="button"
-              className={styles.arrowBtn}
-              onClick={handlePrevClick}
-              disabled={index === 0}
-              aria-label="Previous projects"
-            >
-              ←
-            </button>
-            <button
-              type="button"
-              className={styles.arrowBtn}
-              onClick={handleNextClick}
-              aria-label="Next projects"
-            >
-              →
-            </button>
-          </div>
+          <button
+            type="button"
+            className={styles.arrowBtn}
+            onClick={handleNextClick}
+            aria-label="Next projects"
+          >
+            →
+          </button>
         </div>
       </section>
     </div>
