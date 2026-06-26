@@ -1,3 +1,15 @@
+/* ===== Hero entrance elements ===== */
+/* Safety net: these default to visible. GSAP's fromTo() sets opacity:0
+   itself right before animating in, so this only matters if the GSAP
+   timeline never runs (e.g. a script error) — content stays visible
+   instead of getting stuck invisible. */
+:global(.hero-photo),
+:global(.hero-hey),
+:global(.hero-letter),
+:global(.hero-social) {
+  opacity: 1;
+}
+
 /* ===== Hero section ===== */
 .section {
   position: relative;

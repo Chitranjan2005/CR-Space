@@ -39,7 +39,7 @@ export default function PageLoader({ onComplete }) {
             </span>
           ))}
         </div>
-        <p className={styles.loaderRole}>FULL STACK DEVELOPER</p>
+        <p className={styles.loaderRole}>MERN DEVELOPER</p>
         <div className={styles.progressTrack}>
           <div className={styles.progressBar} style={{ width: `${loadPercent}%` }} />
         </div>

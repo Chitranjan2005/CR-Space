@@ -26,58 +26,70 @@ export default function Hero() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    gsap
-      .timeline()
-      .fromTo(
-        ".hero-photo",
-        { opacity: 0, x: -60, scale: 0.92 },
-        { opacity: 1, x: 0, scale: 1, duration: 0.9, ease: "power3.out" }
-      )
-      .fromTo(
-        ".hero-hey",
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
-        "-=0.5"
-      )
-      .fromTo(
-        ".hero-letter",
-        { opacity: 0, y: 50, rotateX: -90, transformOrigin: "bottom" },
-        { opacity: 1, y: 0, rotateX: 0, stagger: 0.055, duration: 0.7, ease: "power4.out" },
-        "-=0.3"
-      )
-      .fromTo(
-        ".hero-social",
-        { opacity: 0, y: 16, scale: 0.8 },
-        { opacity: 1, y: 0, scale: 1, stagger: 0.08, duration: 0.4, ease: "back.out(1.4)" },
-        "-=0.2"
-      );
+    const ctx = gsap.context(() => {
+      gsap
+        .timeline()
+        .fromTo(
+          ".hero-photo",
+          { opacity: 0, x: -60, scale: 0.92 },
+          { opacity: 1, x: 0, scale: 1, duration: 0.9, ease: "power3.out" }
+        )
+        .fromTo(
+          ".hero-hey",
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+          "-=0.5"
+        )
+        .fromTo(
+          ".hero-letter",
+          { opacity: 0, y: 50, rotateX: -90, transformOrigin: "bottom" },
+          { opacity: 1, y: 0, rotateX: 0, stagger: 0.055, duration: 0.7, ease: "power4.out" },
+          "-=0.3"
+        )
+        .fromTo(
+          ".hero-social",
+          { opacity: 0, y: 16, scale: 0.8 },
+          { opacity: 1, y: 0, scale: 1, stagger: 0.08, duration: 0.4, ease: "back.out(1.4)" },
+          "-=0.2"
+        );
 
-    const words = gsap.utils.toArray(".hero-word");
-    const wordPairs = [];
-    for (let i = 0; i < words.length; i += 2) {
-      wordPairs.push(words.slice(i, i + 2));
-    }
+      const words = gsap.utils.toArray(".hero-word");
+      const wordPairs = [];
+      for (let i = 0; i < words.length; i += 2) {
+        wordPairs.push(words.slice(i, i + 2));
+      }
 
-    const scrollTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".hero-section",
-        start: "top top",
-        end: "+=500%",
-        pin: true,
-        scrub: 1.5,
-        anticipatePin: 1,
-      },
+      const scrollTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".hero-section",
+          start: "top top",
+          end: "+=500%",
+          pin: true,
+          scrub: 1.5,
+          anticipatePin: 1,
+        },
+      });
+
+      wordPairs.forEach((pair, i) => {
+        const pos = i / wordPairs.length;
+        scrollTl.fromTo(
+          pair,
+          { opacity: 0.15, y: 10 },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+          pos
+        );
+      });
     });
 
-    wordPairs.forEach((pair, i) => {
-      const pos = i / wordPairs.length;
-      scrollTl.fromTo(
-        pair,
-        { opacity: 0.15, y: 10 },
-        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
-        pos
-      );
-    });
+    // Other sections (Skills/Projects/Contact) mount in the same tick and
+    // change total document height, which can throw off Hero's pin
+    // measurement. Re-measure once everything has settled.
+    const refresh = requestAnimationFrame(() => ScrollTrigger.refresh());
+
+    return () => {
+      cancelAnimationFrame(refresh);
+      ctx.revert();
+    };
   }, []);
 
   return (
