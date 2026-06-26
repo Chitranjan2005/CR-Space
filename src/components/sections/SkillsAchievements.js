@@ -6,23 +6,19 @@ import styles from "./SkillsAchievements.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ── Placeholder data — swap in real values later ──
 const DEVELOPMENT = [
   "React / Next.js",
-  "JavaScript / TypeScript",
+  "JavaScript",
   "Node.js / Express",
-  "MongoDB",
+  "MongoDB / SQL",
   "REST APIs / Auth",
-  "GSAP / Framer Motion",
 ];
 
 const TOOLS_AND_LANGUAGES = [
   "Git / GitHub",
-  "Vercel / Render",
-  "Figma",
-  "Python",
+  "Doker",
   "Java",
-  "VS Code",
+  "Javascript",
 ];
 
 const ACHIEVEMENTS = [
@@ -37,18 +33,6 @@ const ACHIEVEMENTS = [
     badge: "PROJECT",
     title: "CR-Space Portfolio Launch",
     desc: "Designed and shipped a fully custom Next.js portfolio with GSAP scroll choreography and a canvas starfield.",
-  },
-  {
-    date: "2025 // EVENT_03",
-    badge: "HACKATHON",
-    title: "MindBridge — Agentic Mental Health Tool",
-    desc: "Same-day build of a Hinglish-aware support assistant, deployed end-to-end on Vercel.",
-  },
-  {
-    date: "2025 // EVENT_04",
-    badge: "ACADEMIC",
-    title: "Disaster Resource Allocation Optimizer",
-    desc: "LP-based optimization model with a scipy solver, packaged as a deployed interactive web app.",
   },
 ];
 

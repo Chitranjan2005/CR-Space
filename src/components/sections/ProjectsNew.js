@@ -185,7 +185,6 @@ export default function ProjectsNew() {
           <div className={styles.glassHeader}>
             <span className={styles.glassDot} />
             <span className={styles.glassTitle}>PROJECTS</span>
-            <span className={styles.glassIndex}>// 04</span>
           </div>
         </div>
 
