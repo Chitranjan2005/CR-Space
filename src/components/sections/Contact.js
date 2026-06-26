@@ -77,16 +77,12 @@ export default function Contact() {
   return (
     <div ref={rootRef}>
       <section id="contact" className={styles.section}>
-        <div className={styles.sectionHead}>
-          <span className={styles.sectionIndex}>// 05 — CONTACT</span>
-          <div className={styles.sectionLine} />
-        </div>
 
         <div className={styles.layout}>
           <div className={styles.left}>
             <h2 className={styles.heading}>Got a project in mind? Let&apos;s talk.</h2>
             <p className={styles.subtext}>
-              Open to freelance work, hackathon teams, and interesting full-stack problems.
+              Open to freelance work and interesting full-stack problems.
               Reach out directly or drop a message in the form.
             </p>
 
@@ -95,16 +91,6 @@ export default function Contact() {
               <a href={`mailto:${EMAIL}`} className={styles.contactLink}>
                 {EMAIL}
               </a>
-            </div>
-            <div className={styles.contactRow}>
-              <span className={styles.contactIcon}>#</span>
-              <a href={`tel:${PHONE.replace(/\s/g, "")}`} className={styles.contactLink}>
-                {PHONE}
-              </a>
-            </div>
-            <div className={styles.contactRow}>
-              <span className={styles.contactIcon}>◎</span>
-              <span>{LOCATION}</span>
             </div>
 
             <div className={styles.socials}>
@@ -159,7 +145,7 @@ export default function Contact() {
                   className={styles.textarea}
                   value={form.message}
                   onChange={handleChange}
-                  placeholder="Tell me about the project..."
+                  placeholder=""
                   required
                 />
               </div>

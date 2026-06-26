@@ -10,7 +10,7 @@ const NAV_ITEMS = ["HOME", "PROJECTS", "SKILLS", "CONTACT"];
 const SOCIALS = [
   { label: "GitHub", href: "https://github.com/chitranjan2005", icon: "⌥" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/chitranjan-k-50bb70324", icon: "in" },
-  { label: "leetcode", href: "https://leetcode.com/u/O3vjKD9Bsv", icon: "𝕏" },
+  { label: "Twitter", href: "", icon: "𝕏" },
 ];
 
 const DESCRIPTIONS = [

@@ -4,35 +4,110 @@
   padding: 14vh 6vw 18vh;
 }
 
-.sectionHead {
-  display: flex;
-  align-items: baseline;
+/* ===== Glass header panel ===== */
+.glassHeader {
+  display: inline-flex;
+  align-items: center;
   gap: 14px;
-  margin-bottom: 5vh;
+  padding: 14px 28px;
+  margin-bottom: 6vh;
+  border-radius: 999px;
+  border: 1px solid rgba(77, 184, 212, 0.25);
+  background: rgba(13, 22, 30, 0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
-.sectionIndex {
+.glassDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4db8d4;
+  box-shadow: 0 0 10px #4db8d4;
+}
+
+.glassTitle {
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.18em;
+  color: #ccc;
+}
+
+.glassIndex {
   font-family: var(--font-mono, monospace);
-  font-size: 0.8rem;
-  letter-spacing: 0.15em;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
   color: #4db8d4;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
-.sectionLine {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(to right, #2a3a45, transparent);
+/* ===== Slider shell ===== */
+.sliderShell {
+  position: relative;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 28px;
+.viewport {
+  overflow: hidden;
+  width: 100%;
 }
 
+.track {
+  display: flex;
+  gap: 24px;
+  will-change: transform;
+}
+
+.cardSlot {
+  flex: 0 0 calc((100% - 24px * 2) / 3);
+  min-width: 0;
+}
+
+/* ===== Nav arrows ===== */
+.navArrows {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+  justify-content: flex-end;
+}
+
+.arrowBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid #1c2933;
+  background: rgba(13, 22, 30, 0.5);
+  color: #888;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.arrowBtn:hover {
+  color: #4db8d4;
+  border-color: #4db8d4;
+  transform: translateY(-2px);
+}
+
+.arrowBtn:disabled {
+  opacity: 0.3;
+  cursor: default;
+  transform: none;
+}
+
+.arrowBtn:disabled:hover {
+  color: #888;
+  border-color: #1c2933;
+}
+
+/* ===== Card ===== */
 .card {
   position: relative;
+  height: 100%;
   border: 1px solid #1c2933;
   border-radius: 12px;
   background: rgba(13, 22, 30, 0.45);
@@ -100,14 +175,14 @@
 .cardTitle {
   font-family: sans-serif;
   font-weight: 600;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   color: #ccc;
   margin-bottom: 8px;
 }
 
 .cardDesc {
   font-family: sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.83rem;
   line-height: 1.7;
   color: #888;
   margin-bottom: 18px;
@@ -122,11 +197,21 @@
 
 .stackChip {
   font-family: var(--font-mono, monospace);
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   letter-spacing: 0.05em;
   color: #6db8cf;
   background: rgba(77, 184, 212, 0.08);
   border: 1px solid rgba(77, 184, 212, 0.18);
   border-radius: 4px;
   padding: 3px 8px;
+}
+
+/* ===== Responsive: 2 cards on smaller screens ===== */
+@media (max-width: 860px) {
+  .cardSlot {
+    flex: 0 0 calc((100% - 20px) / 2);
+  }
+  .track {
+    gap: 20px;
+  }
 }
