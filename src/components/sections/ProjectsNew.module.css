@@ -1,0 +1,132 @@
+.section {
+  position: relative;
+  width: 100%;
+  padding: 14vh 6vw 18vh;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 5vh;
+}
+
+.sectionIndex {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  color: #4db8d4;
+  opacity: 0.7;
+}
+
+.sectionLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, #2a3a45, transparent);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+}
+
+.card {
+  position: relative;
+  border: 1px solid #1c2933;
+  border-radius: 12px;
+  background: rgba(13, 22, 30, 0.45);
+  backdrop-filter: blur(2px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+  border-color: #2f4a58;
+  transform: translateY(-4px);
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px 0;
+}
+
+.cardTag {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  color: #4db8d4;
+  opacity: 0.7;
+  border: 1px solid #1c2933;
+  border-radius: 4px;
+  padding: 3px 8px;
+}
+
+.cardLinks {
+  display: flex;
+  gap: 10px;
+}
+
+.cardLink {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #1c2933;
+  border-radius: 50%;
+  color: #888;
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.cardLink:hover {
+  color: #4db8d4;
+  border-color: #4db8d4;
+}
+
+.cardBody {
+  padding: 18px 22px 22px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTitle {
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: #ccc;
+  margin-bottom: 8px;
+}
+
+.cardDesc {
+  font-family: sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: #888;
+  margin-bottom: 18px;
+  flex: 1;
+}
+
+.stackRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.stackChip {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  color: #6db8cf;
+  background: rgba(77, 184, 212, 0.08);
+  border: 1px solid rgba(77, 184, 212, 0.18);
+  border-radius: 4px;
+  padding: 3px 8px;
+}

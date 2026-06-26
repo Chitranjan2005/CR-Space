@@ -11,7 +11,7 @@ export const metadata = { title: "CR-SPACE | Chitranjan" };
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body style={{ margin: 0, background: "#060d14" }}>
+      <body>
         {/* Fixed backdrop — sits behind everything, never scrolls */}
         <Background />
 

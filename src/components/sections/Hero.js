@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { gsap } from "@/lib/gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import MusicPlayer from "@/components/ui/MusicPlayer";
@@ -22,37 +22,8 @@ const DESCRIPTIONS = [
 const NAME_LETTERS = "Chitranjan".split("");
 
 export default function Hero() {
-  const [loading, setLoading] = useState(true);
-  const [loadPercent, setLoadPercent] = useState(0);
-
-  // Loader progress
-  useEffect(() => {
-    let progress = 0;
-    const interval = setInterval(() => {
-      progress += Math.random() * 18;
-      if (progress >= 100) {
-        progress = 100;
-        setLoadPercent(100);
-        clearInterval(interval);
-        setTimeout(() => {
-          gsap.to(".loader-wrap", {
-            opacity: 0,
-            duration: 0.8,
-            ease: "power2.inOut",
-            onComplete: () => setLoading(false),
-          });
-        }, 400);
-      } else {
-        setLoadPercent(Math.floor(progress));
-      }
-    }, 120);
-    return () => clearInterval(interval);
-  }, []);
-
   // Hero entrance + pinned scroll word reveal
   useEffect(() => {
-    if (loading) return;
-
     gsap.registerPlugin(ScrollTrigger);
 
     gsap
@@ -107,28 +78,7 @@ export default function Hero() {
         pos
       );
     });
-  }, [loading]);
-
-  if (loading) {
-    return (
-      <div className={`loader-wrap ${styles.loader}`}>
-        <div className={styles.loaderInner}>
-          <div className={styles.loaderLogo}>
-            {"CR-SPACE".split("").map((c, i) => (
-              <span key={i} className={styles.loaderChar} style={{ animationDelay: `${i * 0.08}s` }}>
-                {c}
-              </span>
-            ))}
-          </div>
-          <p className={styles.loaderRole}>FULL STACK DEVELOPER</p>
-          <div className={styles.progressTrack}>
-            <div className={styles.progressBar} style={{ width: `${loadPercent}%` }} />
-          </div>
-          <span className={styles.loaderPercent}>{loadPercent}%</span>
-        </div>
-      </div>
-    );
-  }
+  }, []);
 
   return (
     <section className={`hero-section ${styles.section}`}>
