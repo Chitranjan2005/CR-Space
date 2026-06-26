@@ -6,13 +6,12 @@ import styles from "./ProjectsNew.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ── Dummy data — replace with your real project details ──
 const PROJECTS = [
   {
     tag: "HACKATHON",
     title: "Commit DNA",
     desc: "GitHub commit history analyzer that generates a burnout score and developer archetype card from real commit patterns.",
-    stack: ["React", "Node", "Express", "Simple-git"],
+    stack: ["React", "Express", "Simple-Git"],
     liveUrl: "commit-dna-lkc9.vercel.app",
     codeUrl: "https://github.com/Chitranjan2005/Commit-DNA.git",
   },
@@ -22,40 +21,40 @@ const PROJECTS = [
     desc: "This site. A sci-fi themed portfolio built with Next.js, GSAP scroll choreography, Lenis smooth scroll, and a custom starfield canvas.",
     stack: ["Next.js", "GSAP", "Lenis", "Tailwind"],
     liveUrl: "#",
-    codeUrl: "#",
+    codeUrl: "https://github.com/Chitranjan2005/CR-Space.git",
   },
   {
-    tag: "PROJECT",
+    tag: "Project",
     title: "Footstep-Energy-Generator",
-    desc: "This project explores the potential of harvesting energy from footsteps using piezoelectric transducers. By converting mechanical energy into electrical energy, this system aims to power small electronic devices..",
-    stack: [],
+    desc: "This project explores the potential of harvesting energy from footsteps. By converting mechanical energy into electrical energy, this system aims to power small electronic devices..",
+    stack: ["Arduino"],
     liveUrl: "#",
     codeUrl: "https://github.com/Chitranjan2005/Footstep-Energy-Generator.git",
   },
-  {
-    tag: "PROJECT",
-    title: "Commit DNA",
-    desc: "GitHub commit history analyzer that generates a burnout score and developer archetype card from real commit patterns.",
-    stack: ["React", "Express", "Canvas API"],
-    liveUrl: "#",
-    codeUrl: "#",
-  },
+//   {
+//     tag: "PROJECT",
+//     title: "Commit DNA",
+//     desc: "GitHub commit history analyzer that generates a burnout score and developer archetype card from real commit patterns.",
+//     stack: ["React", "Express", "Canvas API"],
+//     liveUrl: "#",
+//     codeUrl: "",
+//   },
   {
     tag: "HACKATHON",
-    title: "SightSpeak",
-    desc: "React Native sign language bridge app using on-device LLM, speech-to-text, and text-to-speech models for offline use.",
-    stack: ["React Native", "On-device LLM"],
+    title: "Rock-Paper_scissors Using Gensture Recognition",
+    desc: "The game is exclusively controlled through the recognition of the player's hand gestures, transforming each motion into a dynamic and immersive form of interaction in a couple of seconds.",
+    stack: ["Python", "OpenCV", "MediaPipe" ,  "HtML/CSS" , "javascript"],
     liveUrl: "#",
-    codeUrl: "#",
+    codeUrl: "https://github.com/Chitranjan2005/Foss-hack-project-25.git",
   },
-  {
-    tag: "ACADEMIC",
-    title: "Disaster Resource Allocator",
-    desc: "Linear programming model for optimal disaster resource distribution, backed by a scipy solver and real NDMA/NDRF data.",
-    stack: ["Python", "SciPy", "HTML/CSS"],
-    liveUrl: "#",
-    codeUrl: "#",
-  },
+//   {
+//     tag: "ACADEMIC",
+//     title: "Disaster Resource Allocator",
+//     desc: "Linear programming model for optimal disaster resource distribution, backed by a scipy solver and real NDMA/NDRF data.",
+//     stack: ["Python", "SciPy", "HTML/CSS"],
+//     liveUrl: "#",
+//     codeUrl: "#",
+//   },
 ];
 
 const DESKTOP_VISIBLE = 2;
