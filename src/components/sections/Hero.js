@@ -82,9 +82,7 @@ export default function Hero() {
       });
     });
 
-    // Other sections (Skills/Projects/Contact) mount in the same tick and
-    // change total document height, which can throw off Hero's pin
-    // measurement. Re-measure once everything has settled.
+
     const refresh = requestAnimationFrame(() => ScrollTrigger.refresh());
 
     return () => {
