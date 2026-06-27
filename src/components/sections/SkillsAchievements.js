@@ -7,8 +7,7 @@ import styles from "./SkillsAchievements.module.css";
 gsap.registerPlugin(ScrollTrigger);
 
 const DEVELOPMENT = [
-  "React / Next.js",
-  "JavaScript",
+  "React",
   "Node.js / Express",
   "MongoDB / SQL",
   "REST APIs / Auth",

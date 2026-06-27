@@ -6,10 +6,7 @@ import styles from "./Contact.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ── Dummy contact info — replace with your real details ──
-const EMAIL = "chitranjan@example.com";
-const PHONE = "+91 00000 00000";
-const LOCATION = "Greater Noida, India";
+const EMAIL = "imcr8882@gmail.com";
 
 const SOCIALS = [
   { label: "GitHub", href: "https://github.com/chitranjan2005", icon: "⌥" },
