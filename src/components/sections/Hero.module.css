@@ -1,3 +1,8 @@
+/* ===== Hero entrance elements ===== */
+/* Safety net: these default to visible. GSAP's fromTo() sets opacity:0
+   itself right before animating in, so this only matters if the GSAP
+   timeline never runs (e.g. a script error) — content stays visible
+   instead of getting stuck invisible. */
 :global(.hero-photo),
 :global(.hero-hey),
 :global(.hero-letter),
@@ -37,7 +42,7 @@
   font-size: 1.4rem;
   font-weight: 700;
   font-family: sans-serif;
-  color: #43a8c1;
+  color: #4db8d4;
 }
 
 .navLinks {
@@ -46,11 +51,11 @@
 }
 
 .navLink {
-  font-size: 1.0rem;
+  font-size: 0.8rem;
   letter-spacing: 0.1em;
   font-family: sans-serif;
   text-decoration: none;
-  color: #dad4d4;
+  color: #888;
   transition: color 0.2s ease;
 }
 
@@ -111,7 +116,7 @@
 
 .desc {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   line-height: 1.9;
   font-family: sans-serif;
 }
@@ -119,7 +124,7 @@
 .word {
   display: inline-block;
   margin-right: 4px;
-  color: #c3bdbd;
+  color: #888;
   opacity: 0.15;
   will-change: opacity, transform;
 }
@@ -141,12 +146,12 @@
   font-size: 0.85rem;
   font-family: sans-serif;
   text-decoration: none;
-  color: #e2dada;
+  color: #888;
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .socialIcon:hover {
-  color: #1eae34;
+  color: #4db8d4;
   border-color: #4db8d4;
 }
 
@@ -173,4 +178,93 @@
   0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
   50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
   100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+  .section {
+    height: auto;
+    min-height: 100vh;
+    padding: 100px 0 60px;
+  }
+
+  .nav {
+    padding: 16px 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .navLogo {
+    font-size: 1.1rem;
+  }
+
+  .navLinks {
+    gap: 0.9rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .navLink {
+    font-size: 0.68rem;
+  }
+
+  .content {
+    flex-direction: column;
+    gap: 28px;
+    padding: 0 6vw;
+    text-align: center;
+  }
+
+  .photoWrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  .blobShape {
+    width: 170px;
+    height: 200px;
+  }
+
+  .textWrap {
+    max-width: 100%;
+  }
+
+  .heading {
+    font-size: clamp(1.6rem, 7vw, 2.1rem);
+    margin-bottom: 1rem;
+  }
+
+  .desc {
+    font-size: 0.85rem;
+    line-height: 1.7;
+  }
+
+  .descWrap {
+    text-align: left;
+  }
+
+  .socials {
+    justify-content: center;
+    margin-top: 1.4rem;
+  }
+
+  .scrollHint {
+    right: 24px;
+    bottom: 20px;
+  }
+}
+
+@media (max-width: 420px) {
+  .navLinks {
+    gap: 0.6rem;
+  }
+
+  .navLink {
+    font-size: 0.62rem;
+  }
+
+  .blobShape {
+    width: 140px;
+    height: 165px;
+  }
 }

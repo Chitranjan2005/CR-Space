@@ -4,6 +4,27 @@
   padding: 14vh 6vw 20vh;
 }
 
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 5vh;
+}
+
+.sectionIndex {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  color: #4db8d4;
+  opacity: 0.7;
+}
+
+.sectionLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, #2a3a45, transparent);
+}
+
 .layout {
   display: flex;
   gap: 6vw;
@@ -27,13 +48,13 @@
 
 .subtext {
   font-family: sans-serif;
-  font-size: 1.0rem;
+  font-size: 0.9rem;
   line-height: 1.8;
   color: #888;
   max-width: 420px;
   margin-bottom: 2.2rem;
 }
-    
+
 .contactRow {
   display: flex;
   align-items: center;
@@ -79,16 +100,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #6e7a84;
+  border: 1px solid #1c2933;
   border-radius: 50%;
-  color: #fcfcfc;
+  color: #888;
   text-decoration: none;
-  font-size: 1.0rem;
+  font-size: 0.85rem;
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .socialIcon:hover {
-  color: #00ae03;
+  color: #4db8d4;
   border-color: #4db8d4;
 }
 
@@ -110,7 +131,7 @@
 
 .fieldLabel {
   font-family: var(--font-mono, monospace);
-  font-size: 0.8rem;
+  font-size: 0.65rem;
   letter-spacing: 0.12em;
   color: #4db8d4;
   opacity: 0.8;
@@ -126,7 +147,7 @@
   border-radius: 6px;
   padding: 10px 12px;
   font-family: sans-serif;
-  font-size: 1.0rem;
+  font-size: 0.85rem;
   color: #ddd;
   outline: none;
   transition: border-color 0.2s ease;
@@ -151,7 +172,7 @@
   background: rgba(77, 184, 212, 0.08);
   color: #4db8d4;
   font-family: var(--font-mono, monospace);
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   letter-spacing: 0.1em;
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
@@ -167,4 +188,38 @@
   font-size: 0.7rem;
   color: #4db8d4;
   opacity: 0.8;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+  .section {
+    padding: 10vh 6vw 14vh;
+  }
+
+  .layout {
+    gap: 40px;
+  }
+
+  .left,
+  .right {
+    min-width: 100%;
+  }
+
+  .heading {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    max-width: 100%;
+  }
+
+  .subtext {
+    max-width: 100%;
+    font-size: 0.85rem;
+  }
+
+  .form {
+    padding: 22px;
+  }
+
+  .socials {
+    justify-content: flex-start;
+  }
 }
