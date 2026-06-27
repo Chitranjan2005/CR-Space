@@ -37,7 +37,7 @@
   font-size: 1.4rem;
   font-weight: 700;
   font-family: sans-serif;
-  color: #4db8d4;
+  color: #43a8c1;
 }
 
 .navLinks {
@@ -46,11 +46,11 @@
 }
 
 .navLink {
-  font-size: 0.8rem;
+  font-size: 1.0rem;
   letter-spacing: 0.1em;
   font-family: sans-serif;
   text-decoration: none;
-  color: #888;
+  color: #dad4d4;
   transition: color 0.2s ease;
 }
 
@@ -111,7 +111,7 @@
 
 .desc {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   line-height: 1.9;
   font-family: sans-serif;
 }
@@ -119,7 +119,7 @@
 .word {
   display: inline-block;
   margin-right: 4px;
-  color: #888;
+  color: #c3bdbd;
   opacity: 0.15;
   will-change: opacity, transform;
 }
@@ -141,12 +141,12 @@
   font-size: 0.85rem;
   font-family: sans-serif;
   text-decoration: none;
-  color: #888;
+  color: #e2dada;
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .socialIcon:hover {
-  color: #4db8d4;
+  color: #1eae34;
   border-color: #4db8d4;
 }
 

@@ -11,11 +11,11 @@ gsap.registerPlugin(ScrollTrigger);
 const PROJECTS = [
   {
     tag: "HACKATHON",
-    title: "Climate Digital Twin — India",
-    desc: "Full data pipeline with a PyTorch LSTM forecasting model and a FastAPI backend, simulating regional climate scenarios.",
-    stack: ["Python", "PyTorch", "FastAPI", "React"],
-    liveUrl: "#",
-    codeUrl: "#",
+    title: "Commit DNA",
+    desc: "GitHub commit history analyzer that generates a burnout score and developer archetype card from real commit patterns.",
+    stack: ["React", "Express", "Simple-Git"],
+    liveUrl: "https://commit-dna-lkc9.vercel.app",
+    codeUrl: "https://github.com/Chitranjan2005/Commit-DNA.git",
   },
   {
     tag: "PROJECT",
@@ -23,39 +23,23 @@ const PROJECTS = [
     desc: "This site. A sci-fi themed portfolio built with Next.js, GSAP scroll choreography, Lenis smooth scroll, and a custom starfield canvas.",
     stack: ["Next.js", "GSAP", "Lenis", "Tailwind"],
     liveUrl: "#",
-    codeUrl: "#",
+    codeUrl: "https://github.com/Chitranjan2005/CR-Space.git",
+  },
+  {
+    tag: "Project",
+    title: "Footstep-Energy-Generator",
+    desc: "This project explores the potential of harvesting energy from footsteps. By converting mechanical energy into electrical energy, this system aims to power small electronic devices..",
+    stack: ["Arduino"],
+    liveUrl: "#",
+    codeUrl: "https://github.com/Chitranjan2005/Footstep-Energy-Generator.git",
   },
   {
     tag: "HACKATHON",
-    title: "MindBridge",
-    desc: "Agentic mental health triage tool with Hinglish language support, built and deployed end-to-end during a hackathon.",
-    stack: ["Next.js", "Tailwind", "Vercel"],
+    title: "Rock-Paper_scissors Using Gensture Recognition",
+    desc: "The game is exclusively controlled through the recognition of the player's hand gestures, transforming each motion into a dynamic and immersive form of interaction in a couple of seconds.",
+    stack: ["Python", "OpenCV", "MediaPipe", "HtML/CSS", "javascript"],
     liveUrl: "#",
-    codeUrl: "#",
-  },
-  {
-    tag: "PROJECT",
-    title: "Commit DNA",
-    desc: "GitHub commit history analyzer that generates a burnout score and developer archetype card from real commit patterns.",
-    stack: ["React", "Express", "Canvas API"],
-    liveUrl: "#",
-    codeUrl: "#",
-  },
-  {
-    tag: "HACKATHON",
-    title: "SightSpeak",
-    desc: "React Native sign language bridge app using on-device LLM, speech-to-text, and text-to-speech models for offline use.",
-    stack: ["React Native", "On-device LLM"],
-    liveUrl: "#",
-    codeUrl: "#",
-  },
-  {
-    tag: "ACADEMIC",
-    title: "Disaster Resource Allocator",
-    desc: "Linear programming model for optimal disaster resource distribution, backed by a scipy solver and real NDMA/NDRF data.",
-    stack: ["Python", "SciPy", "HTML/CSS"],
-    liveUrl: "#",
-    codeUrl: "#",
+    codeUrl: "https://github.com/Chitranjan2005/Foss-hack-project-25.git",
   },
 ];
 
@@ -75,7 +59,6 @@ export default function ProjectsNew() {
 
   const maxIndex = Math.max(0, PROJECTS.length - visibleCount);
 
-  // Track viewport width to switch 2 <-> 1 visible cards
   useEffect(() => {
     const updateVisibleCount = () => {
       const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
@@ -86,7 +69,6 @@ export default function ProjectsNew() {
     return () => window.removeEventListener("resize", updateVisibleCount);
   }, []);
 
-  // Clamp index whenever visibleCount changes (e.g. resize mid-scroll)
   useEffect(() => {
     setIndex((i) => Math.min(i, Math.max(0, PROJECTS.length - visibleCount)));
   }, [visibleCount]);
@@ -104,7 +86,7 @@ export default function ProjectsNew() {
   const goNext = useCallback(() => {
     setIndex((i) => {
       const localMax = Math.max(0, PROJECTS.length - visibleCount);
-      return i >= localMax ? 0 : i + 1; // loop back to start
+      return i >= localMax ? 0 : i + 1;
     });
   }, [visibleCount]);
 
@@ -112,14 +94,11 @@ export default function ProjectsNew() {
     setIndex((i) => Math.max(0, i - 1));
   }, []);
 
-  // Keep a ref to the latest goNext so the interval below never goes stale
-  // and never needs to be torn down/recreated just because maxIndex changed.
   const goNextRef = useRef(goNext);
   useEffect(() => {
     goNextRef.current = goNext;
   }, [goNext]);
 
-  // Move the track to match the current index
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -137,8 +116,6 @@ export default function ProjectsNew() {
     });
   }, [index, visibleCount]);
 
-  // Auto-scroll — single interval set up once, reads the latest goNext via ref.
-  // Pausing/resuming just toggles whether the tick actually advances.
   useEffect(() => {
     const id = setInterval(() => {
       if (!paused) goNextRef.current();
@@ -149,7 +126,6 @@ export default function ProjectsNew() {
   const handleNextClick = () => goNext();
   const handlePrevClick = () => goPrev();
 
-  // Scroll-in reveal for header + slider
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
@@ -187,7 +163,6 @@ export default function ProjectsNew() {
           <div className={styles.glassHeader}>
             <span className={styles.glassDot} />
             <span className={styles.glassTitle}>PROJECTS</span>
-            <span className={styles.glassIndex}>// 04</span>
           </div>
         </div>
 
@@ -209,35 +184,60 @@ export default function ProjectsNew() {
 
           <div className={styles.viewport} ref={viewportRef}>
             <div className={styles.track} ref={trackRef}>
-              {PROJECTS.map((project) => (
-                <div key={project.title} className={styles.cardSlot}>
-                  <div className={styles.card}>
-                    <div className={styles.cardTop}>
-                      <span className={styles.cardTag}>{project.tag}</span>
-                      <div className={styles.cardLinks}>
-                        <a href={project.liveUrl} className={styles.cardLink} aria-label="Live demo">
-                          ↗
-                        </a>
-                        <a href={project.codeUrl} className={styles.cardLink} aria-label="Source code">
-                          <GitHubIcon size={15} />
-                        </a>
+              {PROJECTS.map((project) => {
+                const hasLiveDemo = project.liveUrl && project.liveUrl !== "#";
+                return (
+                  <div key={project.title} className={styles.cardSlot}>
+                    <div className={styles.card}>
+                      <div className={styles.cardTop}>
+                        <span className={styles.cardTag}>{project.tag}</span>
+                        <div className={styles.cardLinks}>
+                          {hasLiveDemo ? (
+                            <a
+                              href={project.liveUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={styles.cardLink}
+                              aria-label="Live demo"
+                            >
+                              ↗
+                            </a>
+                          ) : (
+                            <span
+                              className={`${styles.cardLink} ${styles.cardLinkDisabled}`}
+                              aria-label="Live demo not available"
+                              title="Not deployed yet"
+                            >
+                              ↗
+                            </span>
+                          )}
+                          <a
+                            href={project.codeUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.cardLink}
+                            aria-label="Source code"
+                          >
+                            <GitHubIcon size={15} />
+                          </a>
+                        </div>
                       </div>
-                    </div>
 
-                    <div className={styles.cardBody}>
-                      <h3 className={styles.cardTitle}>{project.title}</h3>
-                      <p className={styles.cardDesc}>{project.desc}</p>
-                      <div className={styles.stackRow}>
-                        {project.stack.map((tech) => (
-                          <span key={tech} className={styles.stackChip}>
-                            {tech}
-                          </span>
-                        ))}
+                      <div className={styles.cardBody}>
+                        <h3 className={styles.cardTitle}>{project.title}</h3>
+                        <p className={styles.cardDesc}>{project.desc}</p>
+                        <div className={styles.stackRow}>
+                          {project.stack.map((tech) => (
+                            <span key={tech} className={styles.stackChip}>
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 

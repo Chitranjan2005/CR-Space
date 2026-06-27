@@ -3,20 +3,21 @@ import { useEffect } from "react";
 import { gsap } from "@/lib/gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import MusicPlayer from "@/components/ui/MusicPlayer";
+import { GitHubIcon, LinkedInIcon, LeetCodeIcon } from "@/components/ui/SocialIcons";
 import styles from "./Hero.module.css";
 
 const NAV_ITEMS = ["HOME", "PROJECTS", "SKILLS", "CONTACT"];
 
 const SOCIALS = [
-  { label: "GitHub", href: "https://github.com", icon: "⌥" },
-  { label: "LinkedIn", href: "https://linkedin.com", icon: "in" },
-  { label: "Twitter", href: "https://twitter.com", icon: "𝕏" },
+  { label: "GitHub", href: "https://github.com", Icon: GitHubIcon },
+  { label: "LinkedIn", href: "https://linkedin.com", Icon: LinkedInIcon },
+  { label: "LeetCode", href: "https://leetcode.com", Icon: LeetCodeIcon },
 ];
 
 const DESCRIPTIONS = [
   "I am a Full-stack developer building scalable and user-focused web applications.",
-  "Bachelor of technology with strong focus on computer science fundamentals and continuous learning.",
-  "Currently exploring Agentic AI to create intelligent, autonomous systems.",
+  "Currently Pursuing Bachelor of technology with strong focus on computer science fundamentals and continuous learning.",
+  "Skilled in Data Structures, Algorithms, eith a passion for solving challenginf programing problems.Focused on optimized ,scalableand efficient code for real-world applications.",
 ];
 
 const NAME_LETTERS = "Chitranjan".split("");
@@ -140,9 +141,16 @@ export default function Hero() {
           </div>
 
           <div className={styles.socials}>
-            {SOCIALS.map((item) => (
-              <a key={item.label} href={item.href} className={`hero-social ${styles.socialIcon}`}>
-                {item.icon}
+            {SOCIALS.map(({ label, href, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className={`hero-social ${styles.socialIcon}`}
+              >
+                <Icon size={17} />
               </a>
             ))}
           </div>

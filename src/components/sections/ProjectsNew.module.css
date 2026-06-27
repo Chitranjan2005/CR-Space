@@ -147,6 +147,7 @@
   font-family: var(--font-mono, monospace);
   font-size: 0.78rem;
   letter-spacing: 0.16em;
+  text-transform: uppercase;
   color: #4db8d4;
   opacity: 0.8;
   border: 1px solid rgba(77, 184, 212, 0.3);
@@ -167,14 +168,24 @@
   justify-content: center;
   border: 1px solid rgba(77, 184, 212, 0.25);
   border-radius: 50%;
-  color: #aaa;
+  color: #e2dbdb;
   text-decoration: none;
   font-size: 1.05rem;
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
+.cardLinkDisabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.cardLinkDisabled:hover {
+  color: #aaa;
+  border-color: rgba(53, 216, 59, 0.25);
+}
+
 .cardLink:hover {
-  color: #4db8d4;
+  color: #29ea60;
   border-color: #4db8d4;
 }
 
@@ -242,4 +253,4 @@
   .glassHeader {
     padding: 16px 30px;
   }
-}
+}   

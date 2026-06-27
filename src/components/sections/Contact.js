@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "@/lib/gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { GitHubIcon, LinkedInIcon, LeetCodeIcon } from "@/components/ui/SocialIcons";
 import styles from "./Contact.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -9,9 +10,9 @@ gsap.registerPlugin(ScrollTrigger);
 const EMAIL = "imcr8882@gmail.com";
 
 const SOCIALS = [
-  { label: "GitHub", href: "https://github.com/chitranjan2005", icon: "⌥" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/chitranjan-k-50bb70324", icon: "in" },
-  { label: "Leetcode", href: "https://leetcode.com/u/O3vjKD9Bsv", icon: "𝕏" },
+  { label: "GitHub", href: "https://github.com/chitranjan2005", Icon: GitHubIcon },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/chitranjan-k-50bb70324", Icon: LinkedInIcon },
+  { label: "Leetcode", href: "https://leetcode.com/u/O3vjKD9Bsv", Icon: LeetCodeIcon },
 ];
 
 export default function Contact() {
@@ -91,9 +92,16 @@ export default function Contact() {
             </div>
 
             <div className={styles.socials}>
-              {SOCIALS.map((item) => (
-                <a key={item.label} href={item.href} className={styles.socialIcon}>
-                  {item.icon}
+              {SOCIALS.map(({ label, href, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className={styles.socialIcon}
+                >
+                  <Icon size={17} />
                 </a>
               ))}
             </div>
