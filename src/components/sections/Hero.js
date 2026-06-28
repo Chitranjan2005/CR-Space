@@ -17,7 +17,7 @@ const SOCIALS = [
 const DESCRIPTIONS = [
   "I am a Full-stack developer building scalable and user-focused web applications.",
   "Currently Pursuing Bachelor of technology with strong focus on computer science fundamentals and continuous learning.",
-  "Skilled in Data Structures, Algorithms, eith a passion for solving challenginf programing problems.Focused on optimized ,scalableand efficient code for real-world applications.",
+  "Skilled in Data Structures, Algorithms, with a passion for solving challenging programming problems.Focused on Writing optimized ,scalable and efficient code for real-world applications.",
 ];
 
 const NAME_LETTERS = "Chitranjan".split("");
